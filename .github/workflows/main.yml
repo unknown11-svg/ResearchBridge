@@ -48,3 +48,11 @@ jobs:
       with:
         name: generated-lockfile
         path: package-lock.json
+    - name: Environment Debug
+      run: |
+    	echo "Node: $(node -v)"
+    	echo "NPM: $(npm -v)"
+    	echo "OS: $(uname -a)"
+    	echo "PATH: ${PATH}"
+    	git status
+    	ls -la

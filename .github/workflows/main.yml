@@ -1,28 +1,50 @@
-name: ResearchBridge CI
+name: ResearchBridge CI/CD
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+on: [push, pull_request]
 
 jobs:
-  build:
+  install-and-test:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        
+        node-version: [18.x]
+
     steps:
     - uses: actions/checkout@v4
-    
-    - name: Setup Node
+
+    - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '18.x'
-    
-    - name: Install dependencies
-      run: npm ci
-      
-    - name: Run tests
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+
+    - name: Install Dependencies
+      id: install
+      shell: bash
+      run: |
+        # Check for lockfile (works on both Windows/Linux)
+        if [ -f package-lock.json ]; then
+          echo "Using npm ci"
+          npm ci
+        elif [ -f yarn.lock ]; then
+          echo "Using yarn install"
+          yarn install --frozen-lockfile
+        else
+          echo "No lockfile found - generating new one"
+          npm install
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add package-lock.json
+          git commit -m "Auto-generated package-lock.json" || echo "No changes to commit"
+        fi
+
+    - name: Run Tests
       run: npm test
+
+    - name: Upload Artifacts (if lockfile was generated)
+      if: steps.install.outcome == 'success' && !files('package-lock.json')
+      uses: actions/upload-artifact@v3
+      with:
+        name: generated-lockfile
+        path: package-lock.json

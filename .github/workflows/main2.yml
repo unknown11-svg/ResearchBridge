@@ -1,42 +1,63 @@
 name: ResearchBridge CI/CD (Robust)
 
 on:
-  workflow_dispatch: # Allow manual triggers
+  workflow_dispatch:
   push:
-    branches: [ main ]
-    paths-ignore: [ 'docs/**', 'README.md' ] # Skip non-code changes
+    branches: [main]
+    paths-ignore: ['docs/**', 'README.md']
 
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 10 # Prevent hangs
+    timeout-minutes: 10
     permissions:
-      contents: read
+      contents: write
       checks: write
 
     steps:
     - name: Checkout Code
       uses: actions/checkout@v4
       with:
-        fetch-depth: 0 # Get full git history
+        fetch-depth: 0
 
     - name: Setup Node
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: '18.x'
         cache: 'npm'
-        check-latest: true
 
-    - name: Dependency Audit
+    - name: Generate Lock File
       run: |
-        npm install --package-lock-only --ignore-scripts
-        npm audit --audit-level=moderate || true
+        if [ ! -f package-lock.json ]; then
+          echo "🔧 package-lock.json not found. Attempting to generate..."
+          npm install --package-lock-only || { echo "❌ Failed to generate lock file"; exit 1; }
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add package-lock.json
+          git commit -m "Generate package-lock.json" || echo "⚠️ No changes to commit"
+        else
+          echo "✅ package-lock.json already exists"
+        fi
 
-    - name: Install & Test
+
+    - name: Install Dependencies
       run: |
         if [ -f package-lock.json ]; then
           npm ci --ignore-scripts
         else
-          npm install --package-lock-only
+          echo "No lock file found, skipping npm ci"
         fi
-        npm test
+
+    - name: Security Audit
+      run: npm audit --audit-level=moderate
+
+    - name: Run Tests
+      run: npm test
+
+    - name: Debug Info
+      run: |
+        echo "Git status:"
+        git status
+        echo "List of files:"
+        ls -la
+

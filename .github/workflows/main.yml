@@ -1,0 +1,8 @@
+name: CI Starter
+on: [push]
+
+jobs:
+  hello-world:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 GitHub Actions is working!"

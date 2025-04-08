@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
-      contents: read
+      contents: write
       checks: write
 
     steps:
@@ -53,3 +53,11 @@ jobs:
 
     - name: Run Tests
       run: npm test
+
+    - name: Debug Info
+      run: |
+        echo "Git status:"
+        git status
+        echo "List of files:"
+        ls -la
+

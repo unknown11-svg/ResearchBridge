@@ -1,0 +1,42 @@
+name: ResearchBridge CI/CD (Robust)
+
+on:
+  workflow_dispatch: # Allow manual triggers
+  push:
+    branches: [ main ]
+    paths-ignore: [ 'docs/**', 'README.md' ] # Skip non-code changes
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10 # Prevent hangs
+    permissions:
+      contents: read
+      checks: write
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0 # Get full git history
+
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.21.1'
+        cache: 'npm'
+        check-latest: true
+
+    - name: Dependency Audit
+      run: |
+        npm install --package-lock-only --ignore-scripts
+        npm audit --audit-level=moderate || true
+
+    - name: Install & Test
+      run: |
+        if [ -f package-lock.json ]; then
+          npm ci --ignore-scripts
+        else
+          npm install --package-lock-only
+        fi
+        npm test

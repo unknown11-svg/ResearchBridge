@@ -1,0 +1,25 @@
+{
+  "name": "researchbridge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "jest.config.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unknown11-svg/ResearchBridge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/unknown11-svg/ResearchBridge/issues"
+  },
+  "homepage": "https://github.com/unknown11-svg/ResearchBridge#readme"
+}

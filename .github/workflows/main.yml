@@ -1,58 +1,81 @@
 name: ResearchBridge CI/CD
 
-on: [push, pull_request]
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths-ignore: ['docs/**', 'README.md']
+  pull_request:
+    branches: [main]
 
 jobs:
-  install-and-test:
+  validate:
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        node-version: [18.x]
+
+    permissions:
+      contents: write
+      checks: write
 
     steps:
-    - uses: actions/checkout@v4
-
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
+    - name: Checkout Code
+      uses: actions/checkout@v4
       with:
-        node-version: ${{ matrix.node-version }}
+        fetch-depth: 0
+
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18.x'
         cache: 'npm'
 
-    - name: Install Dependencies
-      id: install
-      shell: bash
+    - name: Generate Lock File
       run: |
-        # Check for lockfile (works on both Windows/Linux)
-        if [ -f package-lock.json ]; then
-          echo "Using npm ci"
-          npm ci
-        elif [ -f yarn.lock ]; then
-          echo "Using yarn install"
-          yarn install --frozen-lockfile
-        else
-          echo "No lockfile found - generating new one"
-          npm install
+        if [ ! -f package-lock.json ]; then
+          echo "🔧 package-lock.json not found. Attempting to generate..."
+          npm install --package-lock-only || { echo "❌ Failed to generate lock file"; exit 1; }
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git add package-lock.json
-          git commit -m "Auto-generated package-lock.json" || echo "No changes to commit"
+          git commit -m "Generate package-lock.json" || echo "⚠️ No changes to commit"
+        else
+          echo "✅ package-lock.json already exists"
         fi
+      shell: bash
 
-    - name: Run Tests
-      run: npm test
-
-    - name: Upload Artifacts (if lockfile was generated)
-      if: steps.install.outcome == 'success' && !files('package-lock.json')
-      uses: actions/upload-artifact@v3
-      with:
-        name: generated-lockfile
-        path: package-lock.json
-    - name: Environment Debug
+    - name: Install Dependencies
       run: |
-    	echo "Node: $(node -v)"
-    	echo "NPM: $(npm -v)"
-    	echo "OS: $(uname -a)"
-    	echo "PATH: ${PATH}"
-    	git status
-    	ls -la
+        if [ -f package-lock.json ]; then
+          npm ci --ignore-scripts
+        else
+          echo "No lock file found, skipping npm ci"
+        fi
+      shell: bash
+    
+    - name: Lint Code
+      run: npx eslint . --ext .js,.jsx,.ts,.tsx
+     
+
+    - name: Security Audit
+      run: npm audit --audit-level=moderate
+
+    - name: Run Tests with Coverage
+      run: npm run test:coverage
+
+    - name: Upload Coverage Report
+      if: success()
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage-report-${{ matrix.os }}
+        path: coverage
+
+    - name: Debug Info
+      run: |
+        echo "Git status:"
+        git status
+        echo "List of files:"
+        ls -la
+      shell: bash

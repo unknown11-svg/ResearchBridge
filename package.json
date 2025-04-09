@@ -8,7 +8,8 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,9 @@
   "bugs": {
     "url": "https://github.com/unknown11-svg/ResearchBridge/issues"
   },
-  "homepage": "https://github.com/unknown11-svg/ResearchBridge#readme"
+  "homepage": "https://github.com/unknown11-svg/ResearchBridge#readme",
+  "devDependencies": {
+    "eslint": "^9.24.0",
+    "jest": "^29.7.0"
+  }
 }

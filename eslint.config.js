@@ -1,10 +1,13 @@
 // eslint.config.js
-module.exports = {
-    extends: [
-      'eslint:recommended', // Extend the recommended ESLint rules
-      'plugin:react/recommended', // If you're using React
-      'plugin:@typescript-eslint/recommended', // If you're using TypeScript
-    ],
+import eslintRecommended from 'eslint:recommended';
+import reactRecommended from 'plugin:react/recommended';
+import typescriptRecommended from 'plugin:@typescript-eslint/recommended';
+
+const config = [
+  eslintRecommended,
+  reactRecommended,
+  typescriptRecommended,
+  {
     parserOptions: {
       ecmaVersion: 2021, // Allow the latest ECMAScript features
       sourceType: 'module', // Enable ECMAScript modules
@@ -18,5 +21,7 @@ module.exports = {
         version: 'detect', // Automatically detect the React version
       },
     },
-  };
-  
+  },
+];
+
+export default config;

@@ -1,0 +1,24 @@
+# dependencies
+node_modules/
+
+# testing
+coverage/
+
+# environment variables
+.env
+
+# system files
+.DS_Store
+Thumbs.db
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# editor/IDE settings
+.vscode/
+.idea/
+
+# OS-specific
+*.swp

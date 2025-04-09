@@ -1,0 +1,12 @@
+name: Test Coverage Issue
+description: Report missing or failing tests
+labels: [testing, bug]
+body:
+  - type: textarea
+    attributes:
+      label: What’s the issue?
+      description: Is a test missing or failing? Give details.
+  - type: input
+    attributes:
+      label: Related File or Module
+      placeholder: e.g., dashboard.js

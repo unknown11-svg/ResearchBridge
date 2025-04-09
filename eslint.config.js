@@ -1,27 +1,39 @@
 // eslint.config.js
-import eslintRecommended from 'eslint:recommended';
-import reactRecommended from 'plugin:react/recommended';
-import typescriptRecommended from 'plugin:@typescript-eslint/recommended';
+const { FlatCompat } = require('@eslint/eslintrc');
+const js = require('@eslint/js');
+const tsParser = require('@typescript-eslint/parser');
+const tsPlugin = require('@typescript-eslint/eslint-plugin');
+const reactPlugin = require('eslint-plugin-react');
 
-const config = [
-  eslintRecommended,
-  reactRecommended,
-  typescriptRecommended,
+const compat = new FlatCompat();
+
+module.exports = [
+  js.configs.recommended,
+  ...compat.extends('plugin:@typescript-eslint/recommended'),
   {
-    parserOptions: {
-      ecmaVersion: 2021, // Allow the latest ECMAScript features
-      sourceType: 'module', // Enable ECMAScript modules
+    plugins: {
+      react: reactPlugin,
+      '@typescript-eslint': tsPlugin
+    },
+    languageOptions: {
+      parser: tsParser,
+      ecmaVersion: 2021,
+      sourceType: 'module',
+      globals: {
+        module: 'readable'
+      }
     },
     rules: {
-      // Your custom rules go here
-      'no-console': 'warn', // Example: warning for console.log
+      'no-console': 'warn',
+      'react/react-in-jsx-scope': 'off',
+      'react/jsx-uses-react': 'off',
+      '@typescript-eslint/no-require-imports': 'off',
+      'no-undef': 'off'
     },
     settings: {
       react: {
-        version: 'detect', // Automatically detect the React version
-      },
-    },
-  },
+        version: 'detect'
+      }
+    }
+  }
 ];
-
-export default config;

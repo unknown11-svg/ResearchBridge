@@ -1,22 +1,2 @@
-#!/bin/sh
-branch_name=$(git rev-parse --abbrev-ref HEAD)
-
-# Define custom echo messages for each branch
-case "$branch_name" in
-  feature/Hluma)
-    echo "👩‍💻 Hala Madrid!" ;;
-  feature/Tinashe)
-    echo "👨‍💻 Focus, this not the time to celebrate" ;;
-  feature/Nelly)
-    echo "👩‍💻 Commit on Nelly's branch! Congratulations!" ;;
-  feature/Gabriel)
-    echo "👨‍💻 Beyonce is proud of you keep going!" ;;
-  feature/Nhlamulo)
-    echo "👩‍💻 Nhlamulo + Hluma = Nhlahluma!" ;;
-  feature/Musa)
-    echo "👨‍💻 Commit on Musa's branch!" ;;
-  *)
-    echo "✅ Commit on an unknown branch!, What are you trying!!!!" ;;
-esac
-
-exit 0
+#!/usr/bin/env sh
+. "$(dirname "$0")/h"

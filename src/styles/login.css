@@ -1,0 +1,79 @@
+/* Layout styles */
+.login-container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+  }
+  
+  .login-left-section {
+    width: 60%;
+  }
+  
+  .login-right-section {
+    width: 40%;
+    position: relative;
+    background-color: white;
+  }
+  
+  .logo-text {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 20px;
+  }
+  
+  .hero-text {
+    font-size: 36px;
+    font-weight: bold;
+  }
+  
+  .meta-text {
+    font-size: 18px;
+    color: #777;
+  }
+  
+  .centered-form {
+    display: flex;
+    justify-content: center;
+    padding-top: 10%;
+    width: 100%;
+  }
+  
+  .google-btn,
+  .google-loading {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    background: white;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .google-loading {
+    border-width: 0;
+  }
+  
+  .signup-link {
+    font-size: 16px;
+    padding-left: 10px;
+  }
+  
+  /* Video section */
+  .hero-video {
+    height: 100vh;
+    width: 40vw;
+    object-fit: cover;
+  }
+  
+  .overlay-text {
+    text-align: center;
+    font-size: 40px;
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    top: 30%;
+    left: 0;
+    right: 0;
+  }
+  

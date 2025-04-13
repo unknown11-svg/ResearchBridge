@@ -12,7 +12,6 @@
     "test:coverage": "jest --coverage",
     "server": "node server/index.js",
     "dev": "concurrently \"npm run server\" \"npm run start\"",
-    "prepare": "husky install",
     "eject": "react-scripts eject"
   },
   "repository": {
@@ -78,5 +77,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "husky": {
+  "hooks": {
+    "pre-commit": "npm test"
   }
+}
+
 }

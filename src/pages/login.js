@@ -12,6 +12,8 @@ const LoginPage = () => {
   const location = useLocation();
 
   // Google Auth route
+  //"test": "react-scripts test && jest",
+ // "test:coverage": "jest --coverage",
   const googleAuthRoute = () => {
     window.location.href = "http://localhost:5000/auth/google"; 
   };

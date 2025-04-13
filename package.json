@@ -8,8 +8,6 @@
   "scripts": {
     "start": "react-scripts start --port 3000 --open",
     "build": "react-scripts build",
-    "test": "react-scripts test && jest",
-    "test:coverage": "jest --coverage",
     "server": "node server/index.js",
     "dev": "concurrently \"npm run server\" \"npm run start\"",
     "eject": "react-scripts eject"

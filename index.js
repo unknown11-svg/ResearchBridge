@@ -43,13 +43,10 @@ app.use(passport.session());
 app.use('/auth', authRoutes);
 app.use('/api/users', userRoutes);
 
-// --- Serve React Frontend in Production ---
-const reactBuildPath = path.join(__dirname, 'client', 'build');
-app.use(express.static(reactBuildPath));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(reactBuildPath, 'index.html'));
+app.get('/',  (req, res) => {
+  res.sendFile(path.join(__dirname, 'dashboard.html'));
 });
+
 
 // Start Server
 const port = process.env.PORT || 5000;

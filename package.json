@@ -1,34 +1,14 @@
 {
-  "name": "researchbridge",
+  "name": "researchbridge-backend",
   "version": "1.0.0",
-  "description": "University Research Collaboration Platform",
-  "private": true,
-  "type": "module",
+  "description": "Backend for University Research Collaboration Platform",
   "main": "index.js",
   "scripts": {
-    "start": "react-scripts start --port 3000 --open",
-    "build": "react-scripts build",
-    "server": "node server/index.js",
-    "test": "jest",
-    "dev": "concurrently \"npm run server\" \"npm run start\"",
-    "eject": "react-scripts eject"
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/unknown11-svg/ResearchBridge.git"
-  },
-  "keywords": [
-    "research",
-    "collaboration"
-  ],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/unknown11-svg/ResearchBridge/issues"
-  },
-  "homepage": ".",
+  "type": "module",
   "dependencies": {
-    "@tailwindcss/forms": "^0.5.10",
     "axios": "^1.8.4",
     "bcrypt": "^5.1.1",
     "connect-mongo": "^5.1.0",
@@ -40,41 +20,9 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.13.2",
     "passport": "^0.7.0",
-    "passport-google-oauth20": "^2.0.0",
-    "web-vitals": "^4.2.4",
-    "zustand": "^5.0.3"
+    "passport-google-oauth20": "^2.0.0"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.3.0",
-    "concurrently": "^8.2.2",
-    "eslint": "^8.56.0",
-    "eslint-config-react-app": "^7.0.1",
-    "eslint-plugin-react": "^7.37.5",
-    "husky": "^9.1.7",
-    "jest": "^29.7.0"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm test"
-    }
+    "nodemon": "^3.0.0"
   }
 }

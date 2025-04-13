@@ -23,7 +23,11 @@ router.get(
       
 
       if (!role) {
+<<<<<<< HEAD
         return res.redirect(`http://localhost:3000/login?userId=${userId}&message=You%20need%20to%20create%20an%20account%20before%20logging%20in.`);
+=======
+        return res.redirect(`http://localhost:3000/login?userId=${userId}&message=You%20need%20to%20create%20an%20account%20before%20you%20log%20in.`);
+>>>>>>> 401b0658e20493c294d1ba47e1b67171eac6c726
       }
       const { lname, fname } = user;
       res.redirect(`http://localhost:3000/?token=${token}&userId=${userId}&role=${role}&fname=${fname}&lname=${lname}`)

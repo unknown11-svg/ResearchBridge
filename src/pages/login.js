@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Rings } from "react-loader-spinner";
 import googleLogo from "../icons/image.png";
 import heroVideo from "../videos/hero.mp4";
 import "../styles/login.css";
-import useStore from "../zustand/research.js"; 
+
 
 const LoginPage = () => {
   const [submitting, setSubmitting] = React.useState(false);
-  const navigate = useNavigate();
-  const { setProfile } = useStore();
   const [message, setMessage] = useState(""); 
   const location = useLocation();
 
@@ -19,6 +17,7 @@ const LoginPage = () => {
   };
 
   useEffect(() => {
+    setSubmitting(null)
     const queryParams = new URLSearchParams(location.search);
     const messageParam = queryParams.get('message'); // Use 'messageParam' as a local variable
     if (messageParam) {

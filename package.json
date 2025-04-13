@@ -9,6 +9,7 @@
     "start": "react-scripts start --port 3000 --open",
     "build": "react-scripts build",
     "server": "node server/index.js",
+    "test": "jest",
     "dev": "concurrently \"npm run server\" \"npm run start\"",
     "eject": "react-scripts eject"
   },

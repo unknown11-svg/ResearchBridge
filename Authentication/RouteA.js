@@ -24,6 +24,7 @@ router.get(
 
       if (!role) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         return res.redirect(`http://localhost:3000/login?userId=${userId}&message=You%20need%20to%20create%20an%20account%20before%20logging%20in.`);
 =======
         return res.redirect(`http://localhost:3000/login?userId=${userId}&message=You%20need%20to%20create%20an%20account%20before%20you%20log%20in.`);
@@ -31,6 +32,12 @@ router.get(
       }
       const { lname, fname } = user;
       res.redirect(`http://localhost:3000/?token=${token}&userId=${userId}&role=${role}&fname=${fname}&lname=${lname}`)
+=======
+        return res.redirect(`https://myrese.azurewebsites.net/login?userId=${userId}&message=You%20need%20to%20create%20an%20account%20before%20you%20log%20in.`);
+      }
+      const { lname, fname } = user;
+      res.redirect(`https://myrese.azurewebsites.net/?token=${token}&userId=${userId}&role=${role}&fname=${fname}&lname=${lname}`)
+>>>>>>> 808d03473c6a5cad81cccdf140752e408ba6f9d6
       
     }
      catch (error) {

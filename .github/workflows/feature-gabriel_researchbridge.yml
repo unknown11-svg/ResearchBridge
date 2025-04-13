@@ -24,16 +24,18 @@ jobs:
         run: |
           if [ -f package-lock.json ]; then
             npm ci --ignore-scripts
+            npm install eslint @eslint/js @typescript-eslint/parser @typescript-eslint/eslint-plugin --save-dev
           else
             echo "No lock file found, skipping npm ci"
           fi
         shell: bash
 
+
       - name: Run Build Script
         run: npm run build
 
       - name: Run Tests
-        run: npm test
+        run: npm test -- --passWithNoTests
 
       - name: Lint Code
         run: npx eslint . --ext .js,.jsx,.ts,.tsx

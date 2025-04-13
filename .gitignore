@@ -1,24 +1,41 @@
-# dependencies
+<<<<<<< HEAD
 node_modules/
+build/
+dist/
+.env
+=======
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
 
 # testing
-coverage/
+/coverage
 
-# environment variables
-.env
+# production
+/build
 
-# system files
+# misc
 .DS_Store
-Thumbs.db
+>>>>>>> 401b0658e20493c294d1ba47e1b67171eac6c726
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+<<<<<<< HEAD
 
-# editor/IDE settings
 .vscode/
 .idea/
-
-# OS-specific
 *.swp
+*.swo
+
+.DS_Store
+Thumbs.db
+=======
+>>>>>>> 401b0658e20493c294d1ba47e1b67171eac6c726

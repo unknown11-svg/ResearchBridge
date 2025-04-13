@@ -4,7 +4,7 @@
   "description": "University Research Collaboration Platform",
   "private": true,
   "type": "module",
-  "main": "server/index.js",
+  "main": "index.js",
   "scripts": {
     "start": "react-scripts start --port 3000 --open",
     "build": "echo 'No build step needed!'",

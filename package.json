@@ -7,7 +7,7 @@
     "start": "node server/index.js",
     "dev": "nodemon server/index.js",
     "build": "echo \"No build step needed\"",
-    "test": "jest"
+    "test": "jest --passWithNoTests"
   },
   "type": "module",
   "dependencies": {

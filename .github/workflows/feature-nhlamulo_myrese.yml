@@ -22,8 +22,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '22.x'
-      - name: Disable Husky in CI
-        run: HUSKY=0 npm install
+          
       - name: npm install, build, and test
         run: |
           npm install

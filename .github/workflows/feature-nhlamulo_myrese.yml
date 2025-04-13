@@ -26,7 +26,6 @@ jobs:
       - name: npm install, build, and test
         run: |
           npm install
-          chmod +x .husky/*
           npm run build --if-present
           npm run test --if-present
 

@@ -23,6 +23,9 @@ jobs:
         with:
           node-version: '22.x'
           
+      - name: Give execute permission to husky hooks
+        run: chmod +x .husky/*
+   
       - name: npm install, build, and test
         run: |
           npm install

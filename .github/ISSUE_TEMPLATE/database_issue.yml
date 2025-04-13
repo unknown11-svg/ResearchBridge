@@ -1,0 +1,12 @@
+name: Database Issue
+description: Report a bug or concern related to the database
+labels: [bug, database]
+body:
+  - type: textarea
+    attributes:
+      label: Description
+      description: Describe the database issue in detail
+  - type: input
+    attributes:
+      label: Related Table(s)
+      placeholder: e.g., users, transactions

@@ -1,0 +1,63 @@
+name: ResearchBridge CI/CD (Robust)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths-ignore: ['docs/**', 'README.md']
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      checks: write
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18.x'
+        cache: 'npm'
+
+    - name: Generate Lock File
+      run: |
+        if [ ! -f package-lock.json ]; then
+          echo "🔧 package-lock.json not found. Attempting to generate..."
+          npm install --package-lock-only || { echo "❌ Failed to generate lock file"; exit 1; }
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add package-lock.json
+          git commit -m "Generate package-lock.json" || echo "⚠️ No changes to commit"
+        else
+          echo "✅ package-lock.json already exists"
+        fi
+
+
+    - name: Install Dependencies
+      run: |
+        if [ -f package-lock.json ]; then
+          npm ci --ignore-scripts
+        else
+          echo "No lock file found, skipping npm ci"
+        fi
+
+    - name: Security Audit
+      run: npm audit --audit-level=moderate
+
+    - name: Run Tests
+      run: npm test
+
+    - name: Debug Info
+      run: |
+        echo "Git status:"
+        git status
+        echo "List of files:"
+        ls -la
+

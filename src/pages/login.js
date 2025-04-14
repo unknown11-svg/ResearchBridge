@@ -147,7 +147,7 @@ const LoginPage = () => {
           <section>
             <p>
               Don't have an account?{" "}
-              <a className="link signup-link" href="/signup">
+              <a className="link signup-link" href="/role">
                 Sign up
               </a>
             </p>

@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Garamond", sans-serif;
+  }
+  body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: blue;
+  }
+  .role-picker{
+    border-radius: 0.5rem;
+    padding: 2rem 1.5rem;
+    background-color: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  .role-picker .role-select{
+    height: 100%;
+    width: 100%;
+    font-size: 1.06rem;
+    border-radius: 0.31rem;
+    border: 3px solid blue;
+    padding: 0 1.25rem 0 3.15rem;
+  }

@@ -13,6 +13,11 @@ const AUTH = {
 
 
 const USER = {
+    signup: async (formData) => {
+        return axios.post(domain + '/users', formData);
+      },
+      
+
     login: async (email, password) => {
         return axios.post(domain + '/users/login', { email, password });
     },

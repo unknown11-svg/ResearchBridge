@@ -9,7 +9,7 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: blue;
+    background: linear-gradient(45deg, #4D526D, #2D3248, #393F59);
   }
   .role-picker{
     border-radius: 0.5rem;
@@ -22,6 +22,6 @@
     width: 100%;
     font-size: 1.06rem;
     border-radius: 0.31rem;
-    border: 3px solid blue;
+    border: 3px solid #D4B584;
     padding: 0 1.25rem 0 3.15rem;
   }

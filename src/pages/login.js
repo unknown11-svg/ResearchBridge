@@ -30,7 +30,7 @@ const LoginPage = () => {
 
     if (token && userId && role) {
       setAuthData(token, userId, role);
-      navigate("/");
+      navigate("/home");
     }
   }, [navigate, setAuthData]);
 
@@ -147,7 +147,7 @@ const LoginPage = () => {
           <section>
             <p>
               Don't have an account?{" "}
-              <a className="link signup-link" href="/role">
+              <a className="link signup-link" href="/signup">
                 Sign up
               </a>
             </p>

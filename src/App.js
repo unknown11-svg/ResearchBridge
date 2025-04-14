@@ -7,11 +7,17 @@ import RolePage from "./pages/RolePicker.js";
 import ReasercherPage from "./pages/ReseacherForm.js";
 import AdminPage from "./pages/adminform.js";
 import ReviewerPage from "./pages/reviewform.js";
+import SignupPage from "./pages/SignUp.js";
+import LandingPage from "./pages/LandPage.js";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
+      element: <LandingPage />,
+    },
+    {
+      path: "/home",
       element: <HomePage />,
     },
     {
@@ -33,6 +39,10 @@ function App() {
     {
       path: "/reviewer",
       element: <ReviewerPage />,
+    },
+    {
+      path: "/signup",
+      element: <SignupPage />,
     },
   ]);
 

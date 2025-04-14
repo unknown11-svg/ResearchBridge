@@ -1,7 +1,7 @@
-// Home.js
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useStore from '../zustand/research.js';
+import '../styles/Home.css';  // Assuming you're using a separate CSS file
 
 const Home = () => {
   const { profile, setProfile } = useStore();
@@ -9,7 +9,7 @@ const Home = () => {
 
   const handleLogout = () => {
     setProfile(null);  // Clear the profile from the store
-    navigate('/');  // Navigate back to the homepage
+    navigate('/login');  // Navigate back to the homepage
   };
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const Home = () => {
       const token = urlParams.get("token");
       const userId = urlParams.get("userId");
       const role = urlParams.get("role");
-      const fname =urlParams.get("fname");
+      const fname = urlParams.get("fname");
       const lname = urlParams.get("lname");
   
       if (token && userId && role) {
@@ -31,23 +31,23 @@ const Home = () => {
     }, [navigate, setProfile]);
 
   return (
-    <div>
-      <header>
-        <nav>
+    <div className="home-container">
+      <header className="home-header">
+        <nav className="navbar">
           {profile ? (
-            <div>
-              <span>Welcome, {profile.fname} {profile.lname}</span>
-              <button onClick={handleLogout}>Logout</button>
+            <div className="user-info">
+              <span className="welcome-text">Welcome, {profile.fname} {profile.lname}</span>
+              <button className="logout-btn" onClick={handleLogout}>Logout</button>
             </div>
           ) : (
-            <button onClick={() => navigate('/login')}>Login / Signup</button>
+            <button className="auth-btn" onClick={() => navigate('/login')}>Login / Signup</button>
           )}
         </nav>
       </header>
 
-      <main>
-        <h1>Welcome to the Homepage</h1>
-        <p>This is the homepage content.</p>
+      <main className="home-main">
+        <h1 className="home-title">Welcome to the Homepage</h1>
+        <p className="home-content">This is the homepage content. Explore the app and enjoy the features!</p>
       </main>
     </div>
   );

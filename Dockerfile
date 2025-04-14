@@ -14,7 +14,7 @@ RUN cd backend && npm install
 RUN cd frontend && npm install && npm run build
 
 # Expose backend port
-EXPOSE 5000
+EXPOSE 8080
 
 # Start the backend server
 CMD ["npm", "--prefix", "backend", "start"]

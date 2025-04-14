@@ -22,7 +22,7 @@ function App() {
                 </form>
 
         <p className="signup-suggestion">
-          Don't have an account? <a href="#">Sign-up Here</a>
+         {/*Don't have an account? <a href="/">Sign-up Here</a>*/}
         </p>
 
         <p className="split"><span>or</span></p>

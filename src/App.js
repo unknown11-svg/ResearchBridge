@@ -1,7 +1,7 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import Login from "./pages/Login.js";
+import Login from "./pages/Login"; // <-- Add this line to import your Login component
 
 function App() {
   const router = createBrowserRouter([
@@ -11,7 +11,7 @@ function App() {
     },
     {
       path: "/login",
-      element: <Login/>,
+      element: <Login />,
     },
   ]);
 
@@ -23,3 +23,4 @@ function App() {
 }
 
 export default App;
+

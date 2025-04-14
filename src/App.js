@@ -7,6 +7,7 @@ import RolePage from "./pages/RolePicker.js";
 import ReasercherPage from "./pages/ReseacherForm.js";
 import AdminPage from "./pages/adminform.js";
 import ReviewerPage from "./pages/reviewform.js";
+import SignupPage from "./pages/SignupPage.js";
 
 function App() {
   const router = createBrowserRouter([
@@ -34,6 +35,11 @@ function App() {
       path: "/reviewer",
       element: <ReviewerPage />,
     },
+    {
+      path: "/SignupPage",
+      element: <SignupPage />,
+    },
+
   ]);
 
   return (

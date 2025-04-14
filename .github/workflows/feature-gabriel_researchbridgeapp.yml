@@ -27,8 +27,12 @@ jobs:
         run: |
           npm install
           npm run build --if-present
-          npm run test --if-present
+    
+      - name: Make Jest binary executable
+        run: chmod +x ./node_modules/.bin/jest
 
+      - name: Run tests (if any)
+        run: npm run test --if-present
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
 

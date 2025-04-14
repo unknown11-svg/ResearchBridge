@@ -50,6 +50,6 @@ app.get('/',  (req, res) => {
 
 // Start Server
 //const port = process.env.PORT || 3000;
-app.listen(8080, () => {
+app.listen(8080,'0.0.0.0' () => {
   console.log(`🚀 Server running on http://localhost:${port}`);
 });

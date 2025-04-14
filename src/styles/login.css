@@ -1,79 +1,186 @@
 /* Layout styles */
 .login-container {
-    height: 100vh;
-    width: 100%;
-    display: flex;
-  }
-  
-  .login-left-section {
-    width: 60%;
-  }
-  
-  .login-right-section {
-    width: 40%;
-    position: relative;
-    background-color: white;
-  }
-  
-  .logo-text {
-    font-size: 32px;
-    font-weight: bold;
-    margin: 20px;
-  }
-  
-  .hero-text {
-    font-size: 36px;
-    font-weight: bold;
-  }
-  
-  .meta-text {
-    font-size: 18px;
-    color: #777;
-  }
-  
-  .centered-form {
-    display: flex;
-    justify-content: center;
-    padding-top: 10%;
-    width: 100%;
-  }
-  
-  .google-btn,
-  .google-loading {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    padding: 0 10px;
-    background: white;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-  
-  .google-loading {
-    border-width: 0;
-  }
-  
-  .signup-link {
-    font-size: 16px;
-    padding-left: 10px;
-  }
-  
-  /* Video section */
-  .hero-video {
-    height: 100vh;
-    width: 40vw;
-    object-fit: cover;
-  }
-  
-  .overlay-text {
-    text-align: center;
-    font-size: 40px;
-    color: white;
-    font-weight: bold;
-    position: absolute;
-    top: 30%;
-    left: 0;
-    right: 0;
-  }
-  
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  font-family: Arial, sans-serif;
+}
+
+/* Left Section */
+.login-left-section {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 60px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+}
+
+.logo-text {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.hero-text {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #222;
+}
+
+.meta-text {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.centered-form {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Input Form */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.login-form label {
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #333;
+}
+
+.input-field {
+  padding: 12px;
+  margin-bottom: 18px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Remember and Forgot */
+.remember-and-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.remember-me input {
+  margin-right: 6px;
+}
+
+.forgot-link {
+  font-size: 14px;
+  text-decoration: none;
+  color: #7A52D6;
+}
+
+/* Google Button */
+.google-btn,
+.google-loading {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  background: white;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-weight: 500;
+  font-size: 14px;
+  transition: background 0.2s ease;
+}
+
+.google-btn:hover {
+  background-color: #f3f3f3;
+}
+
+.google-loading {
+  border-width: 0;
+}
+
+/* Signup Section */
+.signup-link {
+  font-size: 14px;
+  color: #7A52D6;
+  text-decoration: none;
+  margin-left: 5px;
+}
+
+.login-left-section p {
+  font-size: 14px;
+  color: #444;
+}
+
+/* Right Section */
+.login-right-section {
+  width: 40%;
+  position: relative;
+  background-color: white;
+  overflow: hidden;
+}
+
+.hero-video {
+  height: 100vh;
+  width: 100%;
+  object-fit: cover;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.overlay-text {
+  text-align: center;
+  font-size: 36px;
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0 20px;
+}
+
+.email-login-button {
+  width: 100%;
+  background-color: #3b82f6;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.email-login-button:hover {
+  background-color: #2563eb;
+}
+
+.email-login-button:disabled {
+  background-color: #93c5fd;
+  cursor: not-allowed;
+}

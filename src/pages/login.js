@@ -104,9 +104,6 @@ const LoginPage = () => {
                 />
                 <label htmlFor="checkbox">Remember for 30 days</label>
               </div>
-              <a href="#" className="link forgot-link">
-                Forgot password
-              </a>
             </div>
 
             <button

@@ -1,18 +1,17 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import LoginPage from "./pages/login.js";
-import HomePage from "./pages/homepage.js";
+import Login from "./pages/Login.js";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <HomePage />,
+      element: <Login />,
     },
     {
       path: "/login",
-      element: <LoginPage />,
+      element: <Login/>,
     },
   ]);
 

@@ -6,7 +6,7 @@
   "type": "module",
   "main": "server/index.js",
   "scripts": {
-    "start": "react-scripts start --port 3000 --open",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "server": "node server/index.js",
     "dev": "concurrently \"npm run server\" \"npm run start\"",

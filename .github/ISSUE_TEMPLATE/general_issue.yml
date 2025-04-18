@@ -1,0 +1,15 @@
+name: General Issue
+description: Report anything else (bugs, cleanup, etc.)
+labels: [triage]
+body:
+  - type: textarea
+    attributes:
+      label: Summary
+      description: Briefly explain the issue.
+  - type: dropdown
+    attributes:
+      label: Priority
+      options:
+        - Low
+        - Medium
+        - High
